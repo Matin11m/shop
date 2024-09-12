@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # required for serving swagger ui's css/js files
+
+    'corsheaders',
     'drf_yasg',
     'rest_framework',
     'fence',
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -153,3 +155,5 @@ SIMPLE_JWT = {
     'ALGORITHM': 'HS256',  # الگوریتم رمزنگاری
     'SIGNING_KEY': SECRET_KEY,  # کلید امضا
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
