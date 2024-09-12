@@ -57,10 +57,15 @@ urlpatterns = [
     path('', include('fence.urls')),
 
     # JWT Authentication paths
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # دریافت توکن
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # رفرش توکن
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
+    # Swagger
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Adding media files serving in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
