@@ -71,14 +71,14 @@
 #     serializer_class = CategorySerializer
 
 
-from rest_framework import viewsets
-from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
-
-from .Pagination import CustomPagination
-from .models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer
-from rest_framework.decorators import action
+# from rest_framework import viewsets
+# from rest_framework.response import Response
+# from django.shortcuts import get_object_or_404
+#
+# from .Pagination import CustomPagination
+# from .models import Product, Category
+# from .serializers import ProductSerializer, CategorySerializer
+# from rest_framework.decorators import action
 #
 #
 # class ProductViewSet(viewsets.ModelViewSet):
