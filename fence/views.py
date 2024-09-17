@@ -176,7 +176,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
-from .Pagination import CustomPagination
+# from .Pagination import CustomPagination
 from .models import Product, Category
 from .serializers import ProductSerializer, CategorySerializer
 from rest_framework.decorators import action
@@ -185,7 +185,7 @@ from rest_framework.decorators import action
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.filter(available=True)
     serializer_class = ProductSerializer
-    pagination_class = CustomPagination
+    # pagination_class = CustomPagination
 
     @action(detail=False, methods=['get'])
     def search(self, request):
