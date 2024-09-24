@@ -180,13 +180,12 @@ from .Pagination import CustomPagination
 from .models import Product, Category
 from .serializers import ProductSerializer, CategorySerializer
 from rest_framework.decorators import action
+from django.db.models import Q
 
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.filter(available=True)
     serializer_class = ProductSerializer
-
-    # pagination_class = CustomPagination
 
     @action(detail=False, methods=['get'])
     def search(self, request):
@@ -195,9 +194,7 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
             return Response({"message": "No query provided"}, status=400)
 
         products = Product.objects.filter(
-            name__icontains=query
-        ) | Product.objects.filter(
-            description__icontains=query
+            Q(name__icontains=query) | Q(description__icontains=query)
         )
 
         page = self.paginate_queryset(products)
@@ -228,7 +225,7 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
 class ProductPaginationViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.filter(available=True)
     serializer_class = ProductSerializer
-    pagination_class = CustomPagination  # فعال کردن pagination
+    pagination_class = CustomPagination
 
     @action(detail=False, methods=['get'])
     def search(self, request):
