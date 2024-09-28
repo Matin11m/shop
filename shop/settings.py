@@ -147,12 +147,12 @@ REST_FRAMEWORK = {
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),  # زمان انقضای توکن دسترسی
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),  # زمان انقضای توکن رفرش
-    'ROTATE_REFRESH_TOKENS': False,  # برای چرخش توکن رفرش بعد از هر استفاده
-    'BLACKLIST_AFTER_ROTATION': True,  # توکن‌های قدیمی بعد از چرخش لیست سیاه شوند
-    'ALGORITHM': 'HS256',  # الگوریتم رمزنگاری
-    'SIGNING_KEY': SECRET_KEY,  # کلید امضا
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
 }
 
 CORS_ALLOW_ALL_ORIGINS = True

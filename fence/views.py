@@ -1,30 +1,3 @@
-# from django.shortcuts import render, get_object_or_404
-# from .models import Product, Category
-#
-#
-# def product_list(request):
-#     products = Product.objects.filter(available=True)
-#     categories = Category.objects.all()
-#     return render(request, 'product_list.html', {'products': products, 'categories': categories})
-#
-#
-# def product_detail(request, id):
-#     product = get_object_or_404(Product, id=id)
-#     return render(request, 'product_detail.html', {'product': product})
-#
-#
-# def product_search(request):
-#     query = request.GET.get('q')
-#     products = Product.objects.filter(name__icontains=query) | Product.objects.filter(description__icontains=query)
-#     return render(request, 'product_search.html', {'products': products, 'query': query})
-#
-#
-# def category_products(request, category_id):
-#     category = get_object_or_404(Category, id=category_id)
-#     products = Product.objects.filter(category=category, available=True)
-#     return render(request, 'category_products.html', {'category': category, 'products': products})
-
-
 from rest_framework import viewsets
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
@@ -107,6 +80,6 @@ class ProductPaginationViewSet(viewsets.ReadOnlyModelViewSet):
 
     @action(detail=True, methods=['get'])
     def detail(self, request, pk=None):
-        product = self.get_object()  # Retrieves the product based on `pk`
+        product = self.get_object()
         serializer = self.get_serializer(product)
         return Response(serializer.data)
