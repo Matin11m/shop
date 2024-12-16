@@ -1,5 +1,3 @@
-# shop/context_processors.py
-
 from .models import Category
 
 
