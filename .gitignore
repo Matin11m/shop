@@ -15,7 +15,7 @@ images/
 media/
 product_images/
 staticfiles/
-
+*.xml
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
 # <django-project-name>/staticfiles/
